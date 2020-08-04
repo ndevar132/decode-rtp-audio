@@ -34,7 +34,7 @@ def decode_audio(pc, out_dir):
                 payload_dict[(src, dst, sport, dport)].append(rtp_payload)
                 number_rtppackets += 1
 
-                if number_rtppackets >= 30000:
+                if number_rtppackets >= 100:
                     break
 
     for [src, dst, sport, dport], payload_list in payload_dict.items():
