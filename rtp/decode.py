@@ -8,7 +8,7 @@ from collections import defaultdict
 
 payload_dict = defaultdict(list)
 
-def decode_audio(pc):
+def decode_audio(pc, out_dir):
     number_rtppackets = 0
     for _, pkt in pc:
         eth = dpkt.ethernet.Ethernet(pkt)
@@ -34,13 +34,13 @@ def decode_audio(pc):
                 payload_dict[(src, dst, sport, dport)].append(rtp_payload)
                 number_rtppackets += 1
 
-                if number_rtppackets >= 1000:
+                if number_rtppackets >= 30000:
                     break
 
     for [src, dst, sport, dport], payload_list in payload_dict.items():
         all_payloads = b''.join(payload_list)
-        src_str = socket.inet_ntoa(src)
-        dst_str = socket.inet_ntoa(dst)
+        src_addr = socket.inet_ntoa(src)
+        dst_addr = socket.inet_ntoa(dst)
 
         reverse_src, reverse_dst, reverse_sport, reverse_dport = dst, src, dport, sport
         
@@ -50,7 +50,19 @@ def decode_audio(pc):
             number_singlertp += 1
             continue
 
-    print("There are {} single rtp in {} packets".format(number_singlertp, number_rtppackets))
+    # print("There are {} single rtp in {} packets".format(number_singlertp, number_rtppackets))
+
+        out_dir += '/'
+
+        try:
+            os.mkdir(out_dir)
+        except:
+            pass
+
+        with open(out_dir + src_addr + '-' + dst_addr + '_' + str(sport) + '-' + str(dport) + '.raw', 'wb') as f:
+            f.write(all_payloads)
+
+    
 
                 
     

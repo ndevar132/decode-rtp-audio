@@ -6,7 +6,8 @@ if __name__ == '__main__':
     ap = argparse.ArgumentParser()
 
     ap.add_argument('-f', '--file', required=True, help="pcap file")
-    
+    ap.add_argument("-o", "--out", required=True,
+                    help="output directory")
     args = vars(ap.parse_args())
 
     pcap_file = args['file']
@@ -14,4 +15,6 @@ if __name__ == '__main__':
     trafficfilter = 'rtp'
     pc.setfilter(trafficfilter)
 
-    decode_audio(pc)
+    out_dir = args['out']
+
+    decode_audio(pc, out_dir)

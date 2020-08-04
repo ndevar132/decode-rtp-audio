@@ -2,8 +2,11 @@
 decode-rtp-audio-venv/
 get-pip.py
 
-#pcap file
+# pcap file
 test_180s.pcap
 
-#python generated
+# python generated
 __pycache__/
+
+# out directory
+test-out/
