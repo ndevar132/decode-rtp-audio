@@ -26,16 +26,11 @@ def decode_audio(pc, out_dir):
                 # check if it is rtp
                 if sport < 1024 or dport < 1024 or udp_payload[0] != 128:
                     continue
-
-                # print(udp_payload, '\n')
     
                 # rtp payload starts at bytes 13 (offset 12 bytes for rtp header)
                 rtp_payload = udp_payload[12:]
                 payload_dict[(src, dst, sport, dport)].append(rtp_payload)
                 number_rtppackets += 1
-
-                if number_rtppackets >= 100:
-                    break
 
     for [src, dst, sport, dport], payload_list in payload_dict.items():
         all_payloads = b''.join(payload_list)
@@ -50,8 +45,6 @@ def decode_audio(pc, out_dir):
             number_singlertp += 1
             continue
 
-    # print("There are {} single rtp in {} packets".format(number_singlertp, number_rtppackets))
-
         out_dir += '/'
 
         try:
@@ -61,13 +54,3 @@ def decode_audio(pc, out_dir):
 
         with open(out_dir + src_addr + '-' + dst_addr + '_' + str(sport) + '-' + str(dport) + '.raw', 'wb') as f:
             f.write(all_payloads)
-
-    
-
-                
-    
-    
-        
-
-                
-
