@@ -26,18 +26,18 @@ To split rtp audio from network interface you have to execute the program with r
 To test this you could redirect rtp stream from pcap file to network interface, using tcpreplay:
 
 ```sh
-# tcpreplay -i <network iface> <pcap file>
+tcpreplay -i <network iface> <pcap file>
 ```
 
 ```sh
-# python split_audio.py  -i <iface> -o <output directory>
+python split_audio.py  -i <iface> -o <output directory> -d <duration in seconds>
 ```
 
 help usage:
 
 ```sh
 $ python split_audio.py -h
-usage: split_audio.py [-h] (-i INTERFACE | -f FILE) -o OUT
+usage: split_audio.py [-h] (-i INTERFACE | -f FILE) -o OUT [-d DURATION]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -45,6 +45,8 @@ optional arguments:
                         network interface
   -f FILE, --file FILE  pcap file
   -o OUT, --out OUT     output directory
+  -d DURATION, --duration DURATION
+                        duration of capture from network iface (in seconds)
 ```
 
 To convert raw audio into wav format:
