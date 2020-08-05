@@ -2,6 +2,7 @@ from rtp.decode import decode_audio
 import dpkt
 import pcap
 import argparse
+import time
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
@@ -26,5 +27,7 @@ if __name__ == '__main__':
 
     out_dir = args['out']
 
+    start = time.time()
     decode_audio(pc, out_dir)
+    print(time.time() - start)
     

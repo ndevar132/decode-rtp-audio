@@ -45,6 +45,23 @@ optional arguments:
   -o OUT, --out OUT     output directory
 ```
 
+## Test
+
+To parse pcap file of ~1.8GB, the script takes ~220 second
+Add this to split_audio.py
+
+```python
+...
+start = time.time()
+decode_audio(pc, out_dir)
+print(time.time() - start)
+```
+
+```sh
+$ python split_audio.py  -f test_180s.pcap -o test-out-reg
+219.80524063110352
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
