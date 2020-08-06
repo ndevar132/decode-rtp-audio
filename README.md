@@ -1,12 +1,12 @@
 # split_audio
 
-Script split_audio.py can be used to split rtp audio stream from pcap file or network interface.
+Script `split_audio.py` can be used to split rtp audio stream from pcap file or network interface.
 The converted audio is in raw format. To convert raw audio to wav, you could use sox.
-Script convert_wav.py in the source can be use to convert raw audio to wav.
+Script `convert_wav.py` in the source can be use to convert raw audio to wav.
 
 ## Requirement
 
-To use this program you have to install several python package: dpkt, pypcap.
+To use this program you have to install several python package: `dpkt, pypcap`.
 You can install it through pip package manager
 
 ```sh
@@ -57,10 +57,10 @@ $ python convert_wav.py -i <directory of raw files> -o <output directory>
 
 ## Test
 
-\*Tested on AMD Quad-Core Ryzen 5 Processor, 6.8GB DDR4, 1TB Sata HDD
+\*Tested on Ubuntu 18.04, AMD Quad-Core Ryzen 5 Processor, 8GB DDR4, 1TB Sata HDD
 
 To parse pcap file of ~1.8GB, the script takes ~220 second
-Add this to split_audio.py
+Add this to `split_audio.py`
 
 ```python
 ...
