@@ -1,8 +1,17 @@
 # split_audio
 
 Script `split_audio.py` can be used to split rtp audio stream from pcap file or network interface.
-The converted audio is in raw format. To convert raw audio to wav, you could use sox.
-Script `convert_wav.py` in the source can be used to convert raw audio to wav.
+
+The converted audio is in raw format. you could play the raw audio using Audacity with settings:
+
+-  Encoding: U-Law
+-  Byte order: little-endian
+-  Channels: Mono
+-  Start offset: 0 bytes
+-  Amount to import: 100 %
+-  Sample rate: 8000 Hz
+
+To convert raw audio to wav, you could use sox. Script `convert_wav.py` in the source call sox to convert raw audio to wav.
 
 Few samples of decoded rtp audio can be found in folder `sample-audio-out`
 
