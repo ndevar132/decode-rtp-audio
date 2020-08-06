@@ -4,6 +4,8 @@ Script `split_audio.py` can be used to split rtp audio stream from pcap file or 
 The converted audio is in raw format. To convert raw audio to wav, you could use sox.
 Script `convert_wav.py` in the source can be used to convert raw audio to wav.
 
+Few samples of decoded rtp audio can be found in folder `sample-audio-out`
+
 ## Requirement
 
 To use this program you have to install several python package: `dpkt, pypcap`.
