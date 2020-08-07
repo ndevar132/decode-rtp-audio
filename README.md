@@ -13,7 +13,7 @@ The converted audio is in raw format. you could play the raw audio using Audacit
 
 To convert raw audio to wav, you could use sox. Script `convert_wav.py` in the source call sox to convert raw audio to wav.
 
-Few samples of decoded rtp audio can be found in folder `sample-audio-out`
+Few samples of decoded rtp audio can be found in folder `sample-audio-out`, consisted of one way audio: `<source ip>-<dest ip>_<source port>-<dport>.raw`, `<source ip>-<dest ip>_<source port>-<dport>.wav` and also two way (merged) audio: `<port1>-<port2>_merged.wav`
 
 ## Requirement
 
